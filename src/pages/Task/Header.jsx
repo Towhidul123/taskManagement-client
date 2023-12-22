@@ -25,6 +25,7 @@ const TaskForm = ({ closeModal, control, handleSubmit }) => {
             if (result.success) {
                 console.log('Task submitted successfully!');
                 closeModal();
+                window.location.reload();
             } else {
                 console.error('Failed to submit task:', result.error);
             }
@@ -34,48 +35,78 @@ const TaskForm = ({ closeModal, control, handleSubmit }) => {
     };
 
     return (
-        <div className="p-8">
+        <div className="p-8 bg-white rounded-lg shadow-md">
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="mb-4">
-                    <label htmlFor="title">Title:</label>
+                    <label htmlFor="title" className="block text-sm font-medium text-gray-600">
+                        Title:
+                    </label>
                     <Controller
                         name="title"
                         control={control}
                         defaultValue=""
-                        render={({ field }) => <input {...field} type="text" id="title" />}
-                    />
-                </div>
-
-                <div className="mb-4">
-                    <label htmlFor="description">Description:</label>
-                    <Controller
-                        name="description"
-                        control={control}
-                        defaultValue=""
                         render={({ field }) => (
-                            <textarea {...field} id="description" />
+                            <input
+                                {...field}
+                                type="text"
+                                id="title"
+                                className="mt-1 p-2 border rounded-md w-full focus:outline-none focus:border-blue-500"
+                            />
                         )}
                     />
                 </div>
 
                 <div className="mb-4">
-                    <label htmlFor="deadline">Deadline:</label>
+                    <label htmlFor="description" className="block text-sm font-medium text-gray-600">
+                        Description:
+                    </label>
                     <Controller
-                        name="deadline"
+                        name="description"
                         control={control}
                         defaultValue=""
-                        render={({ field }) => <input {...field} type="date" id="deadline" />}
+                        render={({ field }) => (
+                            <textarea
+                                {...field}
+                                id="description"
+                                className="mt-1 p-2 border rounded-md w-full focus:outline-none focus:border-blue-500"
+                            />
+                        )}
                     />
                 </div>
 
                 <div className="mb-4">
-                    <label htmlFor="priority">Priority:</label>
+                    <label htmlFor="deadline" className="block text-sm font-medium text-gray-600">
+                        Deadline:
+                    </label>
+                    <Controller
+                        name="deadline"
+                        control={control}
+                        defaultValue=""
+                        render={({ field }) => (
+                            <input
+                                {...field}
+                                type="date"
+                                id="deadline"
+                                className="mt-1 p-2 border rounded-md w-full focus:outline-none focus:border-blue-500"
+                            />
+                        )}
+                    />
+                </div>
+
+                <div className="mb-4">
+                    <label htmlFor="priority" className="block text-sm font-medium text-gray-600">
+                        Priority:
+                    </label>
                     <Controller
                         name="priority"
                         control={control}
                         defaultValue=""
                         render={({ field }) => (
-                            <select {...field} id="priority">
+                            <select
+                                {...field}
+                                id="priority"
+                                className="mt-1 p-2 border rounded-md w-full focus:outline-none focus:border-blue-500"
+                            >
                                 <option value="high">High</option>
                                 <option value="medium">Medium</option>
                                 <option value="low">Low</option>
@@ -84,7 +115,10 @@ const TaskForm = ({ closeModal, control, handleSubmit }) => {
                     />
                 </div>
 
-                <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">
+                <button
+                    type="submit"
+                    className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue active:bg-blue-800"
+                >
                     Submit
                 </button>
             </form>
@@ -145,8 +179,8 @@ const Header = () => {
                                 </label>
                                 <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
                                     <li><h2 className=""><FaUserAlt />{user.displayName}</h2></li>
-      
-                                  <Link to='/'>  <li><h2 className="">Home</h2></li></Link>
+
+                                    <Link to='/'>  <li><h2 className="">Home</h2></li></Link>
                                     <li><button className="  px-2 rounded-lg" onClick={handleLogOut}><FaSignOutAlt />Sign Out</button></li>
                                 </ul>
                             </div>
@@ -157,7 +191,7 @@ const Header = () => {
                     </div>
 
                     <h1 className={`text-black origin-left font-medium text-xl duration-200 ${!open && "scale-0"}`}>
-                        Task 
+                        Task
                     </h1>
                 </div>
 

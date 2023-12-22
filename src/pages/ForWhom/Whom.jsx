@@ -2,7 +2,7 @@ import React from 'react';
 import { Tilt } from "react-tilt";
 const Whom = () => {
     return (
-        <div>
+        <div id="whom">
             <h2 className="font-semibold text-4xl my-8 text-center">People who are using this</h2>
             <div className='justify-center  flex flex-wrap gap-10'>
 

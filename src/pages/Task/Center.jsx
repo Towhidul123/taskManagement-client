@@ -75,7 +75,7 @@ const Center = () => {
                 <Droppable droppableId="0" type="COLUMN">
                     {(provided) => (
                         <div ref={provided.innerRef} {...provided.droppableProps} className="grid grid-cols-1">
-                            <h2>todo</h2>
+                          <div>  <h2 className='text-center bg-red-400'>todo</h2></div>
                             <TodoColumn
                                 cards={cards.filter((card) => card.columnIndex === 0)}
                                 onCardDelete={handleDelete}
@@ -90,7 +90,9 @@ const Center = () => {
                 <Droppable droppableId="1" type="COLUMN">
                     {(provided) => (
                         <div ref={provided.innerRef} {...provided.droppableProps} className="grid grid-cols-1">
-                            <h2>on going</h2>
+                         <div>
+                         <h2 className='text-center bg-blue-400'>on going</h2>
+                         </div>
                             <TodoColumn
                                 cards={cards.filter((card) => card.columnIndex === 1)}
                                 onCardDelete={handleDelete}
@@ -105,7 +107,9 @@ const Center = () => {
                 <Droppable droppableId="2" type="COLUMN">
                     {(provided) => (
                         <div ref={provided.innerRef} {...provided.droppableProps} className="grid grid-cols-1">
-                            <h2>completed</h2>
+                           <div>
+                           <h2 className='text-center bg-green-400'>completed</h2>
+                           </div>
                             <TodoColumn
                                 cards={cards.filter((card) => card.columnIndex === 2)}
                                 onCardDelete={handleDelete}

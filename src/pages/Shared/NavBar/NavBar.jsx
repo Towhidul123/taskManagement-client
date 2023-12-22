@@ -1,13 +1,15 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import { FaSignOutAlt, FaUserAlt } from "react-icons/fa";
 import { MdDashboard } from "react-icons/md";
+import { Link as ScrollLink, animateScroll as scroll } from 'react-scroll';
 
 
 const NavBar = () => {
 
   const { user, logOut } = useContext(AuthContext)
+  const [active, setActive] = useState("");
 
   const handleLogOut = () =>
     logOut()
@@ -15,33 +17,40 @@ const NavBar = () => {
       .catch(error => console.log(error))
 
 
-  const navItems = <>
+  const navItems =
 
-    <li className="px-2 rounded-lg hover:bg-black"><NavLink className={({ isActive, isPending }) =>
-      isPending ? "pending" : isActive ? "text-red-600 underline" : ""
-    } to='/'>Home</NavLink></li>
+    <>
+      <li
+        className={`${active === "Home" ? "text-white" : "text-secondary"
+          } hover:text-white text-[18px] mr-2 font-medium cursor-pointer`}
+        onClick={() => setActive("Home")}
+      >
 
+        <ScrollLink to="banner" smooth={true} duration={500}>
+          Home
+        </ScrollLink>
+      </li>
+      <li
+        className={`${active === "Whom" ? "text-white" : "text-secondary"
+          } hover:text-white text-[18px]  mr-2 font-medium cursor-pointer`}
+        onClick={() => setActive("Whom")}
+      >
 
-    <li className="px-2 rounded-lg hover:bg-black"><NavLink className={({ isActive, isPending }) =>
-      isPending ? "pending" : isActive ? "text-red-600 underline" : ""
-    } to='/products'>Products</NavLink></li>
+        <ScrollLink to="whom" smooth={true} duration={500}>
+          Users
+        </ScrollLink>
+      </li>
+      <li
+        className={`${active === "Whom" ? "text-white" : "text-secondary"
+          } hover:text-white text-[18px] font-medium cursor-pointer`}
+        onClick={() => setActive("Whom")}
+      >
 
-
-
-
-    {user &&
-      <>
-
-
-
-
-
-      </>
-    }
-
-
-
-  </>
+        <ScrollLink to="footer" smooth={true} duration={500}>
+          Footer
+        </ScrollLink>
+      </li>
+    </>
 
   return (
     <div className="navbar fixed z-10 bg-opacity-30 bg-black text-white  h-25 mb-4">
@@ -91,7 +100,7 @@ const NavBar = () => {
                   </label>
                   <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
                     <li><h2 className=""><FaUserAlt />{user.displayName}</h2></li>
-                  
+
                     <li><button className="  px-2 rounded-lg" onClick={handleLogOut}><FaSignOutAlt />Sign Out</button></li>
                   </ul>
                 </div>

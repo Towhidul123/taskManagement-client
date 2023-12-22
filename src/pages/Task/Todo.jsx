@@ -38,15 +38,24 @@ const Todo = ({ card, index, onCardDelete, onCardUpdate, columnIndex }) => {
         Swal.fire({
             title: 'Update Task',
             html: `
-            <input id="swal-input1" class="swal2-input" value="${title}">
-            <textarea id="swal-input2" class="swal2-input">${description}</textarea>
-            <input id="swal-input3" class="swal2-input" type="date" value="${deadline}">
-            <select id="swal-input4" class="swal2-input">
-              <option value="high" ${priority === 'high' && 'selected'}>High</option>
-              <option value="medium" ${priority === 'medium' && 'selected'}>Medium</option>
-              <option value="low" ${priority === 'low' && 'selected'}>Low</option>
-            </select>
-          `,
+            <div class="p-4">
+                <label for="swal-input1" class="block text-sm font-medium text-gray-600 mb-2">Title:</label>
+                <input id="swal-input1" class="swal2-input  border rounded-md p-2 focus:outline-none focus:border-blue-500" value="${title}">
+
+                <label for="swal-input2" class="block text-sm font-medium text-gray-600 mt-4 mb-2">Description:</label>
+                <textarea id="swal-input2" class="swal2-input border rounded-md p-2 focus:outline-none focus:border-blue-500">${description}</textarea>
+
+                <label for="swal-input3" class="block text-sm font-medium text-gray-600 mt-4 mb-2">Deadline:</label>
+                <input id="swal-input3" class="swal2-input  border rounded-md p-2 focus:outline-none focus:border-blue-500" type="date" value="${deadline}">
+
+                <label for="swal-input4" class="block text-sm font-medium text-gray-600 mt-4 mb-2">Priority:</label>
+                <select id="swal-input4" class="swal2-input  border rounded-md p-2 focus:outline-none focus:border-blue-500">
+                    <option value="high" ${priority === 'high' && 'selected'}>High</option>
+                    <option value="medium" ${priority === 'medium' && 'selected'}>Medium</option>
+                    <option value="low" ${priority === 'low' && 'selected'}>Low</option>
+                </select>
+            </div>
+        `,
             showCancelButton: true,
             confirmButtonText: 'Update',
         }).then((result) => {
