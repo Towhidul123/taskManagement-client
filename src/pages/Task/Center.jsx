@@ -10,7 +10,7 @@ const Center = () => {
       }, []);
     
       const fetchCards = () => {
-        fetch('http://localhost:5000/todo')
+        fetch('https://server-ten-eosin.vercel.app/todo')
           .then((res) => res.json())
           .then((data) => {
             const cardsWithColumnIndex = data.map((card) => ({
@@ -36,7 +36,7 @@ const Center = () => {
       };
     
       const handleDelete = (_id) => {
-        fetch(`http://localhost:5000/todo/${_id}`, {
+        fetch(`https://server-ten-eosin.vercel.app/todo/${_id}`, {
           method: 'DELETE',
         })
           .then((res) => res.json())
@@ -50,7 +50,7 @@ const Center = () => {
       };
     
       const handleUpdate = (_id, updatedTask) => {
-        fetch(`http://localhost:5000/todo/${_id}`, {
+        fetch(`https://server-ten-eosin.vercel.app/todo/${_id}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',

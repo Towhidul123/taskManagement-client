@@ -10,7 +10,7 @@ const TaskForm = ({ closeModal, control, handleSubmit }) => {
     const onSubmit = async (data) => {
         try {
             console.log("Submitting form with data:", data);
-            const response = await fetch('http://localhost:5000/todo', {
+            const response = await fetch('https://server-ten-eosin.vercel.app/todo', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -146,25 +146,25 @@ const Header = () => {
         setModalOpen(false);
     };
 
-    const methods = useForm(); // Create a single instance of useForm
+    const methods = useForm(); //////////////////
 
     const Menus = [
         { title: "Add new task", src: "Chat", onClick: () => { console.log("Add new task clicked"); setModalOpen(true); } },
-        { title: "Previous task", src: "Calendar" },
+        { title: "Previous task",src: "Calendar" },
     ];
 
     return (
         <div className="flex">
             <div
-                className={` ${open ? "w-52" : "w-20 "} bg-dark-purple h-screen p-5  pt-8 relative duration-300`}
+                className={` ${open ? "w-52" : "w-20 "} bg-blue-gray-400 h-screen p-5  pt-8 relative duration-300`}
             >
                 <img
-                    src="./src/assets/control.png"
+                    src="control.png"
                     className={`absolute cursor-pointer -right-3 top-9 w-7 border-dark-purple border-2 rounded-full ${!open && "rotate-180"}`}
                     onClick={() => setOpen(!open)}
                 />
                 {/* i am here */}
-                <div className="flex gap-x-4 items-center">
+                <div className="flex flex-col gap-x-2 items-center">
 
                     <div className="  rounded-lg ">
                         <div className=" flex justify-center ">
@@ -191,19 +191,21 @@ const Header = () => {
                     </div>
 
                     <h1 className={`text-black origin-left font-medium text-xl duration-200 ${!open && "scale-0"}`}>
-                        Task
+                        Tasker
                     </h1>
                 </div>
+                    
+                    <hr />
 
                 <ul className="pt-6">
                     {Menus.map((Menu, index) => (
                         <li key={index}>
                             <button
-                                className={`flex rounded-md p-2 cursor-pointer hover:bg-light-white text-black-300 text-sm items-center gap-x-4 
+                                className={`flex rounded-md p-2 cursor-pointer bg-blue-gray-600 hover:bg-light-white text-black-300 text-sm items-center gap-x-4 
               ${Menu.gap ? "mt-9" : "mt-2"} ${index === 0 && "bg-light-white"}`}
                                 onClick={Menu.onClick}
                             >
-                                <img src={`./src/assets/${Menu.src}.png`} alt={Menu.title} />
+                                <img src={`${Menu.src}.png`} alt={Menu.title} />
                                 <span className={`${!open && "hidden"} origin-left duration-200`}>
                                     {Menu.title}
                                 </span>

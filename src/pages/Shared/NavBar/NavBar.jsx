@@ -67,9 +67,9 @@ const NavBar = () => {
         <div className="flex flex-col md:flex-row ">
           <Link className="flex" to='/'>
             <div className=" flex justify-center">
-              {/* <img src="icon.png" alt="logo-ct" className="" /> */}
+              <img src="logo.png" alt="logo-ct" className="w-8" />
             </div>
-            <h2 className="font-cust font-semibold text-xs md:font-bold md:text-xl flex items-center justify-center">Task Management</h2>
+            <h2 className="font-cust font-semibold text-xs md:font-bold md:text-xl flex items-center justify-center">Tasker</h2>
 
           </Link>
         </div>
