@@ -58,9 +58,9 @@ const NavBar = () => {
         <div className="flex flex-col md:flex-row ">
           <Link className="flex" to='/'>
             <div className=" flex justify-center">
-              <img src="icon.png" alt="logo-ct" className="" />
+              {/* <img src="icon.png" alt="logo-ct" className="" /> */}
             </div>
-            <h2 className="font-cust font-semibold text-xs md:font-bold md:text-xl flex items-center justify-center">TechFusion </h2>
+            <h2 className="font-cust font-semibold text-xs md:font-bold md:text-xl flex items-center justify-center">Task Management</h2>
 
           </Link>
         </div>
@@ -91,7 +91,7 @@ const NavBar = () => {
                   </label>
                   <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
                     <li><h2 className=""><FaUserAlt />{user.displayName}</h2></li>
-                    <Link to='/dashboard/DashBoard'> <li><button className="  px-2 rounded-lg" ><MdDashboard />DashBoard</button></li></Link>
+                  
                     <li><button className="  px-2 rounded-lg" onClick={handleLogOut}><FaSignOutAlt />Sign Out</button></li>
                   </ul>
                 </div>
